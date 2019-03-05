@@ -23,30 +23,39 @@
       <!-- activate with dgh marker -->
       <a-marker type='pattern' url='image/marker-dgh.patt'>
         <!-- load lights -->
-          <!-- load 3d asset -->
-          <a-entity 
-            obj-model="obj: #diamond-obj; mtl: #diamond-mtl"
-            position='0 0 0'
-            rotation='-90 0 0'
-            scale='0.02 0.02 0.02' 
-            animation__yoyo="property: position; dir: alternate; dur: 2000; easing: easeInOutQuad; loop: true; to: 1 0 0">
-            <a-entity light="type: ambient; color: #888"></a-entity>
-          </a-entity>
+        <a-entity light="type: directional; color: #BE31C8; intensity: 0.1" position="-0.5 1 1"></a-entity>
+        <a-entity light="type: point; intensity: 0.5; color: #BE31C8; distance: 50; decay: 2" position="0 10 10"></a-entity>
+        <!-- load 3d asset -->
+        <a-entity 
+          obj-model="obj: #diamond-obj; mtl: #diamond-mtl"
+          position='0 0 0'
+          rotation='180 0 0'
+          scale='1 1 1' 
+          animation__yoyo="property: position; dir: alternate; dur: 1000; easing: easeInOutQuad; loop: true; to: 0 0 0.5">
+          <a-entity light="type: ambient; color: #BE31C8"></a-entity>
+        </a-entity>
+        <!-- text -->
+        <a-text 
+        scale='0.3 0.3 0.3' 
+        position='-0.2 0.1 0' 
+        rotation='-90 0 0' 
+        color='white'
+        value="Marker is visible.">
+      </a-text>
       </a-marker>
 
       <!-- activate with marker 2 -->
       <a-marker type='pattern' url='image/marker-ted.patt'>
         <!-- load lights -->
-        <a-entity light="type: directional; color: #FFF; intensity: 0.2" position="-0.5 1 1"></a-entity>
-        <a-entity light="type: point; intensity: 0.75; distance: 50; decay: 2" position="0 10 10"></a-entity>
+        
         <!-- load 3d asset -->
-        <a-entity 
+        <a-entity
         obj-model="obj: #hedra-obj; mtl: #hedra-mtl"
         position='0 0 0'
         rotation='-90 0 0'
         scale='0.04 0.04 0.04' 
-        animation__yoyo="property: position; dir: alternate; dur: 2000; easing: easeInOutQuad; loop: true; to: 1 0 0">
-        <a-entity light="type: ambient; color: #888"></a-entity>
+        animation__yoyo="property: position; dir: alternate; dur: 1000; easing: easeInOutQuad; loop: true; to: 0 0 0.5">
+      </a-entity>
       </a-entity>
         <!-- text -->
         <a-text 

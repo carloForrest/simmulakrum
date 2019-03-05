@@ -1,88 +1,104 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
+  <head>
+    <title>Simullakrum</title>
+    <!-- include A-Frame  -->
+    <script src="https://aframe.io/releases/0.9.0/aframe.min.js"></script>    
+    <!-- include ar.js for A-Frame -->
+    <script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>
+    <script src="https://unpkg.com/aframe-animation-component@5.1.2/dist/aframe-animation-component.min.js"></script>
+  </head>
+  
+  <body style='margin : 0px; overflow: hidden;'>
+    <a-scene loading-screen='dotsColor: white; backgroundColor: black' stats embedded arjs='trackingMethod: best; debugUIEnabled:false; '>
+      
+      <!-- define assets -->
+      <a-assets>
+        <!-- define 3d assets -->
+        <a-asset-item id="diamond-obj" src="models/diamond/diamond.obj"></a-asset-item>
+        <a-asset-item id="diamond-mtl" src="models/diamond/diamond.mtl"></a-asset-item>
+        <a-asset-item id="hedra-obj" src="models/hedra/hedra.obj"></a-asset-item>
+        <a-asset-item id="hedra-mtl" src="models/hedra/hedra.mtl"></a-asset-item>
+      </a-assets>
+      
+      <!-- activate with dgh marker -->
+      <a-marker type='pattern' url='image/marker-dgh.patt'>
+        <!-- load lights -->
+        <a-entity light="type: directional; color: #FFF; intensity: 0.2" position="-0.5 1 1"></a-entity>
+        <a-entity light="type: point; intensity: 0.75; distance: 50; decay: 2" position="0 10 10"></a-entity>
+          <!-- load 3d asset -->
+          <a-entity 
+            obj-model="obj: #diamond-obj; mtl: #diamond-mtl"
+            position='0 0 0'
+            rotation='-90 0 0'
+            scale='0.02 0.02 0.02' 
+            animation__yoyo="property: position; dir: alternate; dur: 2000; easing: easeInOutQuad; loop: true; to: 0 0.8 0">
+            <a-entity light="type: ambient; color: #888"></a-entity>
+          </a-entity>
+      </a-marker>
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Created By Carlo</title>
-  <link rel="stylesheet" href="css/main.css">
-  <link rel="icon" href="img/logo.png">
+      <!-- activate with marker 2 -->
+      <a-marker type='pattern' url='image/marker-ted.patt'>
+        <!-- load 3d asset -->
+        <a-entity 
+        obj-model="obj: #hedra-obj; mtl: #hedra-mtl"
+        position='0 0 0'
+        rotation='-90 0 0'
+        scale='0.02 0.02 0.02' 
+        animation__yoyo="property: position; dir: alternate; dur: 2000; easing: easeInOutQuad; loop: true; to: 0 0.8 0">
+        <a-entity light="type: ambient; color: #888"></a-entity>
+      </a-entity>
+        <!-- text -->
+        <a-text 
+          scale='0.5 0.5 0.5' 
+          position='-0.2 1.2 0' 
+          rotation='-90 0 0' 
+          color='red'
+          value="Text is loading.">
+        </a-text>
+      </a-marker>
 
-  <link rel="stylesheet" href="css/font-awesome.min.css">
-  <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Merriweather:400,400i,700" rel="stylesheet">
-  <script src="https://use.fontawesome.com/35bf0bd7e0.js"></script>
-  <script async src="//genius.codes"></script>
+      <!-- activate with marker 3 -->
+      <a-marker type='pattern' url='image/marker-aria.patt'>
+        <a-box color="blue" scale="1 1 1" position='-0.2 1 0' opacity=".5"></a-box>
+        <!-- text -->
+        <a-text 
+          scale='0.5 0.5 0.5' 
+          position='-0.2 1.2 0' 
+          rotation='-90 0 0' 
+          color='blue'
+          value="Text is loading.">
+        </a-text>
+      </a-marker>
 
+      <!-- activate with marker 4 -->
+      <a-marker type='pattern' url='image/marker-bill.patt'>
+        <a-box color="green" scale="1 1 1" position='-0.2 1 0' opacity=".5"></a-box>
+        <!-- text -->
+        <a-text 
+          scale='0.5 0.5 0.5' 
+          position='-0.2 1.2 0' 
+          rotation='-90 0 0' 
+          color='green'
+          value="Text is loading.">
+        </a-text>
+      </a-marker>
 
-</head>
+      <!-- activate with marker 5 -->
+      <a-marker type='pattern' url='image/marker-sarah.patt'>
+        <a-box color="white" scale="1 1 1" position='-0.2 1 0' opacity=".5"></a-box>
+        <!-- text -->
+        <a-text 
+          scale='0.5 0.5 0.5' 
+          position='-0.2 1.2 0' 
+          rotation='-90 0 0' 
+          color='white'
+          value="Text is loading.">
+        </a-text>
+      </a-marker>
 
-<body>
-  <header id="header">
-
-    <div id="logo">
-      <a href="index.html">
-            <img id="logo-wordmark" src="img/wordmarklogo.svg" alt="Carlo Forrest Dormiendo" height=75>
-          </a>
-    </div>
-    <!--#logo-->
-
-    <nav class="nav-main">
-      <ul>
-        <li><a href="index.html">Portfolio</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Explorations</a></li>
-      </ul>
-    </nav>
-    <!--.nav-main-->
-  </header>
-
-
-
-
-
-  <div class="container options">
-
-    <a href="projects/project-template.html">
-      <div class="option option--input">
-        <div class="option__content">
-          <h1>Input</h1>
-          <h2>Process</h2>
-          <p>The cool stuff.</p>
-        </div>
-      </div>
-    </a>
-
-    <a href="#">
-      <div class="option option--output">
-        <div class="option__content">
-          <h1>Output</h1>
-          <h2>Product</h2>
-          <p>The fun stuff.</p>
-        </div>
-      </div>
-    </a>
-  </div>
-  <!--.options-->
-
-
-
-
-
-  <footer id="footer">
-    <nav class="nav-footer">
-      <ul>
-        <li><a href="https://www.linkedin.com/in/carlodormiendo/"><i class="fa fa-linkedin" aria-hidden="true"></i> LinkedIn</a></li>
-        <li><a href="https://www.behance.net/carlo_forrest"><i class="fa fa-behance" aria-hidden="true"></i> Behance</a></li>
-        <li><a href="https://dribbble.com/carlo_forrest"><i class="fa fa-dribbble" aria-hidden="true"></i> Dribbble</a></li>
-        <li><a href="https://www.instagram.com/carlo_forrest/"><i class="fa fa-instagram" aria-hidden="true"></i> Instagram</a></li>
-      </ul>
-    </nav>
-    <!--.nav-footer-->
-  </footer>
-  <!--#footer-->
-
-  <script src="js/script.js"></script>
-</body>
+      <!-- call camera, use this instead of camera static so model disappears when marker out of frame-->
+      <a-entity camera></a-entity>
+    </a-scene>
+  </body>
 
 </html>

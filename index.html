@@ -18,6 +18,10 @@
         <a-asset-item id="diamond-mtl" src="models/diamond/diamond.mtl"></a-asset-item>
         <a-asset-item id="hedra-obj" src="models/hedra/hedra.obj"></a-asset-item>
         <a-asset-item id="hedra-mtl" src="models/hedra/hedra.mtl"></a-asset-item>
+        <a-asset-item id="octa-obj" src="models/octa/octa.obj"></a-asset-item>
+        <a-asset-item id="octa-mtl" src="models/octa/octa.mtl"></a-asset-item>
+        <a-asset-item id="hose-obj" src="models/hose/hose.obj"></a-asset-item>
+        <a-asset-item id="hose-mtl" src="models/hose/hose.mtl"></a-asset-item>
       </a-assets>
       
       <!-- activate with dgh marker -->
@@ -36,27 +40,28 @@
         </a-entity>
         <!-- text -->
         <a-text 
-        scale='0.3 0.3 0.3' 
-        position='-0.2 0.1 0' 
-        rotation='-90 0 0' 
-        color='white'
-        value="Marker is visible.">
-      </a-text>
+          scale='0.3 0.3 0.3' 
+          position='-0.2 0.1 0' 
+          rotation='-90 0 0' 
+          color='white'
+          value="Marker is visible.">
+        </a-text>
       </a-marker>
 
       <!-- activate with marker 2 -->
       <a-marker type='pattern' url='image/marker-ted.patt'>
         <!-- load lights -->
-        
+        <a-entity light="type: directional; color: #fff; intensity: 0.1" position="-0.5 1 1"></a-entity>
+        <a-entity light="type: point; intensity: 0.5; color: #fff; distance: 50; decay: 2" position="0 10 10"></a-entity>
         <!-- load 3d asset -->
         <a-entity
-        obj-model="obj: #hedra-obj; mtl: #hedra-mtl"
-        position='0 0 0'
-        rotation='-90 0 0'
-        scale='0.04 0.04 0.04' 
-        animation__yoyo="property: position; dir: alternate; dur: 1000; easing: easeInOutQuad; loop: true; to: 0 0 0.5">
-      </a-entity>
-      </a-entity>
+          obj-model="obj: #hedra-obj; mtl: #hedra-mtl"
+          position='0 0 0'
+          rotation='-90 0 0'
+          scale='0.04 0.04 0.04' 
+          animation__yoyo="property: position; dir: alternate; dur: 1000; easing: easeInOutQuad; loop: true; to: 0 0 0.5">
+        </a-entity>
+        </a-entity>
         <!-- text -->
         <a-text 
           scale='0.5 0.5 0.5' 
@@ -69,40 +74,73 @@
 
       <!-- activate with marker 3 -->
       <a-marker type='pattern' url='image/marker-aria.patt'>
-        <a-box color="blue" scale="1 1 1" position='-0.2 1 0' opacity=".5"></a-box>
+        <!-- load lights -->
+        <a-entity light="type: directional; color: #fff; intensity: 0.1" position="-0.5 1 1"></a-entity>
+        <a-entity light="type: point; intensity: 0.5; color: #fff; distance: 50; decay: 2" position="0 10 10"></a-entity>
+        <!-- load 3d asset -->
+        <a-entity 
+          obj-model="obj: #diamond-obj; mtl: #diamond-mtl"
+          position='0 0 0'
+          rotation='180 0 0'
+          scale='1 1 1' 
+          animation__yoyo="property: position; dir: alternate; dur: 1000; easing: easeInOutQuad; loop: true; to: 0 0 0.5">
+          <a-entity light="type: ambient; color: #fff"></a-entity>
+        </a-entity>
         <!-- text -->
         <a-text 
-          scale='0.5 0.5 0.5' 
-          position='-0.2 1.2 0' 
+          scale='0.3 0.3 0.3' 
+          position='-0.2 0.1 0' 
           rotation='-90 0 0' 
-          color='blue'
-          value="Text is loading.">
+          color='white'
+          value="Marker is visible.">
         </a-text>
       </a-marker>
 
       <!-- activate with marker 4 -->
       <a-marker type='pattern' url='image/marker-bill.patt'>
-        <a-box color="green" scale="1 1 1" position='-0.2 1 0' opacity=".5"></a-box>
+        <!-- load lights -->
+        <a-entity light="type: directional; color: #fff; intensity: 0.1" position="-0.5 1 1"></a-entity>
+        <a-entity light="type: point; intensity: 0.5; color: #fff; distance: 50; decay: 2" position="0 10 10"></a-entity>
+        <!-- load 3d asset -->
+        <a-entity 
+          obj-model="obj: #hose-obj; mtl: #hose-mtl"
+          position='0 0 0'
+          rotation='180 0 0'
+          scale='1 1 1' 
+          animation__yoyo="property: position; dir: alternate; dur: 1000; easing: easeInOutQuad; loop: true; to: 0 0 0.5">
+          <a-entity light="type: ambient; color: #fff"></a-entity>
+        </a-entity>
         <!-- text -->
         <a-text 
-          scale='0.5 0.5 0.5' 
-          position='-0.2 1.2 0' 
+          scale='0.3 0.3 0.3' 
+          position='-0.2 0.1 0' 
           rotation='-90 0 0' 
-          color='green'
-          value="Text is loading.">
+          color='white'
+          value="Marker is visible.">
         </a-text>
       </a-marker>
 
       <!-- activate with marker 5 -->
       <a-marker type='pattern' url='image/marker-sarah.patt'>
-        <a-box color="white" scale="1 1 1" position='-0.2 1 0' opacity=".5"></a-box>
+        <!-- load lights -->
+        <a-entity light="type: directional; color: #fff; intensity: 0.1" position="-0.5 1 1"></a-entity>
+        <a-entity light="type: point; intensity: 0.5; color: #fff; distance: 50; decay: 2" position="0 10 10"></a-entity>
+        <!-- load 3d asset -->
+        <a-entity 
+          obj-model="obj: #octa-obj; mtl: #octa-mtl"
+          position='0 0 0'
+          rotation='180 0 0'
+          scale='1 1 1' 
+          animation__yoyo="property: position; dir: alternate; dur: 1000; easing: easeInOutQuad; loop: true; to: 0 0 0.5">
+          <a-entity light="type: ambient; color: #fff"></a-entity>
+        </a-entity>
         <!-- text -->
         <a-text 
-          scale='0.5 0.5 0.5' 
-          position='-0.2 1.2 0' 
+          scale='0.3 0.3 0.3' 
+          position='-0.2 0.1 0' 
           rotation='-90 0 0' 
           color='white'
-          value="Text is loading.">
+          value="Marker is visible.">
         </a-text>
       </a-marker>
 

@@ -1,7 +1,15 @@
+p {
+  color:white; 
+  display: none;
+  font-family: Roboto Mono
+}
+
 /* Portrait and Landscape */
 @media only screen 
   and (min-device-width: 375px) 
   and (max-device-width: 667px) 
   and (-webkit-min-device-pixel-ratio: 2) { 
-    p {display: inline-block;}
+    p {display: block;}
+    p {margin-left: auto;}
+    p {margin-right: auto;}
 }

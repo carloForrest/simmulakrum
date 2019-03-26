@@ -1,6 +1,5 @@
 <html>
   <head>
-    <!--hello 1-->
     <title>Simullakrum</title>
     <link rel="icon" type="image/png" href="image/favicon.png">
     <link rel="stylesheet" href="css/main.css" />
@@ -9,10 +8,6 @@
     <!-- include ar.js for A-Frame -->
     <script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>
     <script src="https://unpkg.com/aframe-animation-component@5.1.2/dist/aframe-animation-component.min.js"></script>
-
-    <script src="https://cdn.rawgit.com/tizzle/aframe-orbit-controls-component/v0.1.14/dist/aframe-orbit-controls-component.min.js"></script>
-    
-    
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-135695031-1"></script>
     <script>
@@ -22,6 +17,46 @@
       gtag('config', 'UA-135695031-1');
     </script>
   </head>
+
+  <script type="text/javascript">
+    AFRAME.registerComponent('drag-rotate-component',{
+      schema : { speed : {default:1}},
+      init : function(){
+        this.ifMouseDown = false;
+        this.x_cord = 0;
+        this.y_cord = 0;
+        document.addEventListener('mousedown',this.OnDocumentMouseDown.bind(this));
+        document.addEventListener('mouseup',this.OnDocumentMouseUp.bind(this));
+        document.addEventListener('mousemove',this.OnDocumentMouseMove.bind(this));
+      },
+      OnDocumentMouseDown : function(event){
+        this.ifMouseDown = true;
+        this.x_cord = event.clientX;
+        this.y_cord = event.clientY;
+      },
+      OnDocumentMouseUp : function(){
+        this.ifMouseDown = false;
+      },
+      OnDocumentMouseMove : function(event)
+      {
+        if(this.ifMouseDown)
+        {
+          var temp_x = event.clientX-this.x_cord;
+          var temp_y = event.clientY-this.y_cord;
+          if(Math.abs(temp_y)<Math.abs(temp_x))
+          {
+            this.el.object3D.rotateY(temp_x*this.data.speed/1000);
+          }
+          else
+          {
+            this.el.object3D.rotateX(temp_y*this.data.speed/1000);
+          }
+          this.x_cord = event.clientX;
+          this.y_cord = event.clientY;
+        }
+      }
+    });
+  </script>
   
   <body style='margin : 0px; overflow: hidden;'>
     <p>the_teddyp96</p>
@@ -41,7 +76,7 @@
         <a-asset-item id="octa-obj" src="models/octa/octa.obj"></a-asset-item>
         <a-asset-item id="octa-mtl" src="models/octa/octa.mtl"></a-asset-item>
         <a-asset-item id="hose-obj" src="models/hose/hose.obj"></a-asset-item>
-        <a-asset-item id="hose-mtl" src="models/hose/hose.mtl"></a-asset-item>        
+        <a-asset-item id="hose-mtl" src="models/hose/hose.mtl"></a-asset-item>      
         <a-asset-item id="room-obj" src="models/room/room.obj"></a-asset-item>
         <a-asset-item id="room-mtl" src="models/room/room.mtl"></a-asset-item>
         <a-asset-item id="arrow" src="models/arrow/scene.gltf"></a-asset-item>
@@ -57,6 +92,7 @@
           obj-model="obj: #diamond-obj; mtl: #diamond-mtl"
           position='0 0.5 1'
           rotation='180 0 0'
+          drag-rotate-component
           scale='1 1 1' 
           animation__yoyo="property: position; dir: alternate; dur: 1000; easing: easeInOutQuad; loop: true; to: 0 0.5 0.5">
           <a-entity light="type: ambient; color: #BE31C8"></a-entity>
@@ -79,35 +115,31 @@
         <a-entity light="type: point; intensity: 0.5; color: #fff; distance: 50; decay: 2" position="0 10 10"></a-entity>
         <!-- load 3d asset -->
         <a-entity
-          id="arrow"
-          drag-rotate-component
           gltf-model="#arrow"
-          position='0 0 0'
-          rotation='-85 -10 0'
-          scale='1 1 1' 
+          position='0 0.5 0'
+          rotation='-90 0 0'
+          scale='0.04 0.04 0.04' 
           animation__yoyo="property: rotation; dir: alternate; dur: 2000; easing: easeInOutQuad; loop: true; to: -85 10 0">
-          <a-entity light="type: ambient; color: #3F65F2"></a-entity>
+          <a-entity light="type: ambient; color: #888"></a-entity>
+        </a-entity>
         </a-entity>
       </a-marker>
 
       <!-- activate with aria marker round hair -->
       <a-marker type='pattern' url='image/marker-aria.patt'>
         <!-- load lights -->
-        <a-entity light="type: directional; color: #fff; intensity: 0.3" position="-0.5 1 -5" target="#room"></a-entity>
+        <a-entity light="type: directional; color: #fff; intensity: 0.1" position="-0.5 1 1"></a-entity>
         <a-entity light="type: point; intensity: 0.5; color: #fff; distance: 50; decay: 2" position="0 10 10"></a-entity>
         <!-- load 3d asset -->
         <a-entity 
-          id="room"
-          obj-model="obj: #room-obj; mtl: #room-mtl"
-          position='0 0 0'
-          rotation='-25 180 160'
-          scale='0.01 0.01 0.01' >
+          obj-model="obj: #diamond-obj; mtl: #diamond-mtl"
+          position='0 0.5 1'
+          rotation='180 0 0'
+          scale='1 1 1' 
+          animation__yoyo="property: position; dir: alternate; dur: 1000; easing: easeInOutQuad; loop: true; to: 0 0.5 0.5">
           <a-entity light="type: ambient; color: #888"></a-entity>
         </a-entity>
       </a-marker>
-
-      <!-- arrow sway animation
-      animation__yoyo="property: rotation; dir: alternate; dur: 10000; easing: easeInOutQuad; loop: true; to: 180 720 360"-->
 
       <!-- activate with bill marker glasses -->
       <a-marker type='pattern' url='image/marker-bill.patt'>
@@ -142,9 +174,7 @@
       </a-marker>
 
       <!-- call camera, use this instead of camera static so model disappears when marker out of frame-->
-      <a-entity camera 
-        look-controls>
-      </a-entity>
+      <a-entity camera look-controls="enabled:false"></a-entity>
     </a-scene>
   </body>
 

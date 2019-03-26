@@ -92,7 +92,6 @@
           obj-model="obj: #diamond-obj; mtl: #diamond-mtl"
           position='0 0.5 1'
           rotation='180 0 0'
-          drag-rotate-component
           scale='1 1 1' 
           animation__yoyo="property: position; dir: alternate; dur: 1000; easing: easeInOutQuad; loop: true; to: 0 0.5 0.5">
           <a-entity light="type: ambient; color: #BE31C8"></a-entity>
@@ -133,6 +132,7 @@
         <!-- load 3d asset -->
         <a-entity 
           id="room"
+          drag-rotate-component
           obj-model="obj: #room-obj; mtl: #room-mtl"
           position='0 0 0'
           rotation='-25 180 160'
@@ -147,7 +147,8 @@
         <a-entity light="type: directional; color: #0099CC; intensity: 0.1" position="-0.5 1 1"></a-entity>
         <a-entity light="type: point; intensity: 0.5; color: #0099CC; distance: 50; decay: 2" position="0 10 10"></a-entity>
         <!-- load 3d asset -->
-        <a-entity 
+        <a-entity
+          drag-rotate-component
           obj-model="obj: #hose-obj; mtl: #hose-mtl"
           position='0 0.5 1'
           rotation='180 0 0'
@@ -164,6 +165,7 @@
         <a-entity light="type: point; intensity: 0.5; color: #fff; distance: 50; decay: 2" position="0 10 10"></a-entity>
         <!-- load 3d asset -->
         <a-entity 
+          drag-rotate-component
           obj-model="obj: #octa-obj; mtl: #octa-mtl"
           position='0 0.5 0'
           rotation='180 0 0'

@@ -82,6 +82,7 @@
         <a-asset-item id="octa-mtl" src="models/octa/octa.mtl"></a-asset-item>
         <a-asset-item id="hose-obj" src="models/hose/hose.obj"></a-asset-item>
         <a-asset-item id="hose-mtl" src="models/hose/hose.mtl"></a-asset-item>
+        <a-asset-item id="arrow" src="models/arrow/scene.gltf"></a-asset-item>
       </a-assets>
       
       <!-- activate with dgh marker -->
@@ -116,15 +117,14 @@
         <a-entity light="type: point; intensity: 0.5; color: #fff; distance: 50; decay: 2" position="0 10 10"></a-entity>
         <!-- load 3d asset -->
         <a-entity
-          id="hedra"
+          id="arrow"
           drag-rotate-component
-          obj-model="obj: #hedra-obj; mtl: #hedra-mtl"
+          gltf-model="#arrow"
           position='0 0 0'
-          rotation='0 0 0'
-          scale='0.04 0.04 0.04' 
-          animation__yoyo="property: rotation; dir: alternate; dur: 10000; easing: easeInOutQuad; loop: true; to: 180 720 360">
-          <a-entity light="type: ambient; color: #888"></a-entity>
-        </a-entity>
+          rotation='-85 -10 0'
+          scale='1 1 1' 
+          animation__yoyo="property: rotation; dir: alternate; dur: 2000; easing: easeInOutQuad; loop: true; to: -85 10 0">
+          <a-entity light="type: ambient; color: #3F65F2"></a-entity>
         </a-entity>
       </a-marker>
 
@@ -135,11 +135,11 @@
         <a-entity light="type: point; intensity: 0.5; color: #fff; distance: 50; decay: 2" position="0 10 10"></a-entity>
         <!-- load 3d asset -->
         <a-entity 
-          obj-model="obj: #diamond-obj; mtl: #diamond-mtl"
-          position='0 0.5 1'
-          rotation='180 0 0'
-          scale='1 1 1' 
-          animation__yoyo="property: position; dir: alternate; dur: 1000; easing: easeInOutQuad; loop: true; to: 0 0.5 0.5">
+          obj-model="obj: #hedra-obj; mtl: #hedra-mtl"
+          position='0 0 0'
+          rotation='0 0 0'
+          scale='0.25 0.25 0.25' 
+          animation__yoyo="property: rotation; dir: alternate; dur: 10000; easing: easeInOutQuad; loop: true; to: 180 720 360">
           <a-entity light="type: ambient; color: #888"></a-entity>
         </a-entity>
       </a-marker>

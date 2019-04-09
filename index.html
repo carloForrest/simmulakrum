@@ -17,46 +17,6 @@
       gtag('config', 'UA-135695031-1');
     </script>
   </head>
-
-  <script type="text/javascript">
-    AFRAME.registerComponent('drag-rotate-component',{
-      schema : { speed : {default:1}},
-      init : function(){
-        this.ifMouseDown = false;
-        this.x_cord = 0;
-        this.y_cord = 0;
-        document.addEventListener('mousedown',this.OnDocumentMouseDown.bind(this));
-        document.addEventListener('mouseup',this.OnDocumentMouseUp.bind(this));
-        document.addEventListener('mousemove',this.OnDocumentMouseMove.bind(this));
-      },
-      OnDocumentMouseDown : function(event){
-        this.ifMouseDown = true;
-        this.x_cord = event.clientX;
-        this.y_cord = event.clientY;
-      },
-      OnDocumentMouseUp : function(){
-        this.ifMouseDown = false;
-      },
-      OnDocumentMouseMove : function(event)
-      {
-        if(this.ifMouseDown)
-        {
-          var temp_x = event.clientX-this.x_cord;
-          var temp_y = event.clientY-this.y_cord;
-          if(Math.abs(temp_y)<Math.abs(temp_x))
-          {
-            this.el.object3D.rotateY(temp_x*this.data.speed/1000);
-          }
-          else
-          {
-            this.el.object3D.rotateX(temp_y*this.data.speed/1000);
-          }
-          this.x_cord = event.clientX;
-          this.y_cord = event.clientY;
-        }
-      }
-    });
-  </script>
   
   <body style='margin : 0px; overflow: hidden;'>
     <p>the_teddyp96</p>
@@ -70,13 +30,7 @@
         <img id="sarah" src="image/sarah.png">
         <!-- define 3d assets -->
         <a-asset-item id="diamond-obj" src="models/diamond/diamond.obj"></a-asset-item>
-        <a-asset-item id="diamond-mtl" src="models/diamond/diamond.mtl"></a-asset-item>
-        <a-asset-item id="hedra-obj" src="models/hedra/hedra.obj"></a-asset-item>
-        <a-asset-item id="hedra-mtl" src="models/hedra/hedra.mtl"></a-asset-item> 
-        <a-asset-item id="octa-obj" src="models/octa/octa.obj"></a-asset-item>
-        <a-asset-item id="octa-mtl" src="models/octa/octa.mtl"></a-asset-item>
-        <a-asset-item id="hose-obj" src="models/hose/hose.obj"></a-asset-item>
-        <a-asset-item id="hose-mtl" src="models/hose/hose.mtl"></a-asset-item>      
+        <a-asset-item id="diamond-mtl" src="models/diamond/diamond.mtl"></a-asset-item>    
         <a-asset-item id="classroom-obj" src="models/classroom/classroom.obj"></a-asset-item>
         <a-asset-item id="classroom-mtl" src="models/classroom/classroom.mtl"></a-asset-item>
         <a-asset-item id="arrow" src="models/arrow/scene.gltf"></a-asset-item>
@@ -112,12 +66,10 @@
         <!-- load 3d asset -->
         <a-entity
           id="classroom"
-          drag-rotate-component
           obj-model="obj: #classroom-obj; mtl: #classroom-mtl"
           position='0 0 0'
           rotation='0 180 200'
-          scale='0.005 0.005 0.005' 
-          animation="property: rotation; dir: alternate; dur: 8000; easing: easeInOutQuad; loop: true; to: 0 180 200">
+          scale='0.005 0.005 0.005'>
           <a-entity light="type: ambient; intensity: 1; color: #fff; distance: 2; decay: 12" position="0 01 10"></a-entity>
           <a-entity light="type: point; intensity: 2; color: #fff; distance: 40; decay: 40" 
             position="-70 250 165"></a-entity>
@@ -155,7 +107,7 @@
         <!-- load 3d asset -->
         <a-entity
           drag-rotate-component
-          obj-model="obj: #hose-obj; mtl: #hose-mtl"
+          obj-model="obj: #diamond-obj; mtl: #diamond-mtl"
           position='0 0.5 1'
           rotation='180 0 0'
           scale='0.5 0.5 0.5' 
@@ -172,7 +124,7 @@
         <!-- load 3d asset -->
         <a-entity 
           drag-rotate-component
-          obj-model="obj: #octa-obj; mtl: #octa-mtl"
+          obj-model="obj: #diamond-obj; mtl: #diamond-mtl"
           position='0 0.5 0'
           rotation='180 0 0'
           scale='1 1 1' 

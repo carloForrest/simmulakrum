@@ -110,9 +110,34 @@
       <!-- activate with ted marker no glasses -->
       <a-marker type='pattern' url='image/marker-ted.patt'>
         <!-- load 3d asset -->
-        <a-entity> 
-          
+        <a-entity
+          id="classroom"
+          drag-rotate-component
+          obj-model="obj: #classroom-obj; mtl: #classroom-mtl"
+          position='0 0 0'
+          rotation='-25 160 190'
+          scale='0.01 0.01 0.01' 
+          animation="property: rotation; dir: alternate; dur: 10000; easing: easeInOutQuad; loop: true; to: -25 180 210">
+          <a-entity light="type: ambient; intensity: 1; color: #fff; distance: 2; decay: 12" position="0 01 10"></a-entity>
+          <a-entity light="type: point; intensity: 5; color: #fff; distance: 40; decay: 40" position="-264.251 258.436 169.388"></a-entity>
+          <a-entity light="type: point; intensity: 5; color: #fff; distance: 40; decay: 40" position="-70.008 245.179 165.430"></a-entity>
+          <a-entity light="type: point; intensity: 5; color: #fff; distance: 40; decay: 40" position="84.271 234.649 162.286"></a-entity>
+          <a-entity light="type: point; intensity: 5; color: #BE31C8; distance: 40; decay: 40" position="-264.251 258.436 169.388" 
+          animation__yoyo="property: position; dir: alternate; dur: 3000; easing: easeInOutQuad; loop: true; to: 270 215 90"></a-entity>
+          <a-entity light="type: point; intensity: 5; color: #BE31C8; distance: 40; decay: 40" position="-70.008 245.179 165.430"
+          animation__yoyo="property: position; dir: alternate; dur: 3000; easing: easeInOutQuad; loop: true; to: 270 215 90"></a-entity>
+          <a-entity light="type: point; intensity: 5; color: #BE31C8; distance: 40; decay: 40" position="84.271 234.649 162.286"
+          animation__yoyo="property: position; dir: alternate; dur: 3000; easing: easeInOutQuad; loop: true; to: 270 215 90"></a-entity>
         </a-entity>
+        <!-- text -->
+        <a-text 
+          scale='0.5 0.5 0.5' 
+          font= 'https://cdn.aframe.io/fonts/Monoid.fnt'
+          position='-1.5 1 1' 
+          rotation='-90 0 0' 
+          color='white'
+          value="HUSTLE HUSTLE FIND OUR NEXT PUZZLE."><a-plane color="#000" height="0.5" width="4.5" position="2.1 0 -0.1"></a-plane>
+        </a-text>
       </a-marker>
 
       <!-- activate with aria marker round hair -->
